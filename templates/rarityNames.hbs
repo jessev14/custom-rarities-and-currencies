@@ -1,0 +1,14 @@
+<form>
+    <div class="main-content">
+        {{#each this}}
+        <div class="form-group">
+            <label>{{@key}}</label>
+            <input type="text" name="{{@key}}" value="{{this}}" placeholder="{{@key}}">
+        </div>
+        {{/each}}
+    </div>
+
+    <div class="flexrow">
+        <button type="submit"><i class="fas fa-save"></i> {{localize "SETTINGS.Save"}}</button>
+    </div>
+</form>
