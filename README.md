@@ -12,3 +12,8 @@ For dnd5e.
 Rarity and Currency names (e.g. Uncommon and Gold) can be customized.
 
 If the Rarity Colors module is active, on the item sheet the item name and rarity select will be colored accordingly.
+
+
+<img src="/img/custom-rarity.png" height="350"/>
+
+<img src="/img/custom-currency.png" height="350"/>
