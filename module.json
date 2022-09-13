@@ -2,10 +2,16 @@
   "id": "custom-rarities-and-currencies",
   "title": "Custom Rarities and Currencies",
   "description": "Customize the title and color of item rarities. Enable/disable certain curruencies as well as rename them.",
+  "authors": [
+    {
+      "name": "enso",
+      "discord": "enso#0361"
+    }
+  ],
   "version": "1.0.0",
   "compatibility": {
-    "minimum": "0.8.1",
-    "verified": "0.8.9"
+    "minimum": "10",
+    "verified": "10"
   },
   "relationships": {
     "systems": [
@@ -24,11 +30,5 @@
   ],
   "url": "https://github.com/jessev14/custom-rarities-and-currencies",
   "manifest": "https://github.com/jessev14/custom-rarities-and-currencies/releases/latest/download/module.json",
-  "download": "https://github.com/jessev14/custom-rarities-and-currencies/releases/download/1.0.0/CRC.zip",
-  "authors": [
-    {
-      "name": "enso#0361",
-      "flags": {}
-    }
-  ]
+  "download": "https://github.com/jessev14/custom-rarities-and-currencies/releases/download/1.0.0/CRC.zip"
 }
