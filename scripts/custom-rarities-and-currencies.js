@@ -14,9 +14,20 @@ Hooks.once("init", () => {
     window.CustomRaritiesAndCurrencies = CustomRaritiesAndCurrencies;
     // Register module settings
     window.CustomRaritiesAndCurrencies.registerSettings();
+
+    const customCurrencies = game.settings.get(moduleID, 'currencyNames');
+    for (const [k, v] of Object.entries(CONFIG.DND5E.currencies)) {
+        v.label = customCurrencies[k].name;
+    }
+
+    const customRarities = game.settings.get(moduleID, 'rarityNames');
+    for (const k of Object.keys(CONFIG.DND5E.itemRarity)) {
+        if (customRarities[k]) CONFIG.DND5E.itemRarity[k] = customRarities[k];
+    }
 });
 
 Hooks.once("ready", () => {
+    return;
     // Determine if Rarity Colors module is active
     rarityColorsModuleActive = game.modules.get("rarity-colors")?.active;
     // Register rarity customization hook
@@ -57,7 +68,7 @@ class CustomRaritiesAndCurrencies {
                 "common": "",
                 "uncommon": "",
                 "rare": "",
-                "very rare": "",
+                "veryRare": "",
                 "legendary": "",
                 "artifact": ""
             }
@@ -78,23 +89,23 @@ class CustomRaritiesAndCurrencies {
             config: false,
             type: Object,
             default: {
-                "Copper": {
+                "cp": {
                     name: "",
                     active: true
                 },
-                "Silver": {
+                "sp": {
                     name: "",
                     active: true
                 },
-                "Electrum": {
+                "ep": {
                     name: "",
                     active: true
                 },
-                "Gold": {
+                "gp": {
                     name: "",
                     active: true
                 },
-                "Platinum": {
+                "pp": {
                     name: "",
                     active: true
                 }
@@ -213,7 +224,7 @@ class RarityNames extends FormApplication {
         const settingsData = game.settings.get(moduleID, "rarityNames");
         const data = {};
         for (const [k, v] of Object.entries(settingsData)) {
-            data[capitalizeFirstLetter(k)] = v;
+            data[k] = v;
         }
 
         return data;
@@ -221,8 +232,9 @@ class RarityNames extends FormApplication {
 
     async _updateObject(event, formData) {
         const data = {};
+
         for (const [k, v] of Object.entries(formData)) {
-            data[k.toLowerCase()] = v;
+            data[k] = v;
         }
         await game.settings.set(moduleID, "rarityNames", data);
     }
